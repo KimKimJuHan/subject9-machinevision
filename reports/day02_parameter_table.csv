@@ -1,0 +1,7 @@
+date,image_file,problem,method_tried,parameters,result,otsu_threshold,evaluation,next_step
+2026-10-26,samples/day02/challenge.jpg,저대비+어두움 (흰색 뚜껑 vs 회색 배경 명암차 부족),1차: Gamma 보정,"gamma=0.5",실패 - 뚜껑 하단 그림자로 인해 Otsu 임계값이 뚜껑 상단 경계를 날려버리고 배경과 통합됨,N/A,FAIL,CLAHE 시도
+2026-10-26,samples/day02/challenge.jpg,저대비+어두움 (흰색 뚜껑 vs 회색 배경 명암차 부족),2차: CLAHE + Sharpening + Otsu,"CLAHE: clipLimit=3.0 / tileGridSize=(8,8) | Sharpen kernel: 3x3 (center=9)",성공 - 뚜껑 상단 테두리와 세로 홈이 선명하게 복원되어 배경과 뚜껑 외곽선 완벽 분리,자동 산출 (Otsu),PASS,Day03 Morphology+Contour 연결
+2026-10-26,samples/day02/low_contrast.jpg,전반적 저대비,CLAHE,"clipLimit=2.0 / tileGridSize=(8,8)",히스토그램 균일화로 국소 대비 개선됨,N/A,PASS,참고용
+2026-10-26,samples/day02/dark.jpg,전체 어두움,Gamma 보정,"gamma=0.4",어두운 픽셀 전반 밝기 개선 확인,N/A,PASS,참고용
+2026-10-26,samples/day02/noise.jpg,Salt-and-Pepper 노이즈,Median Filter,"ksize=5",임펄스 노이즈 효과적으로 제거,N/A,PASS,참고용
+2026-10-26,samples/day02/blur.jpg,흐릿한 경계,Sharpening,"kernel: 3x3 (center=9 / surrounds=-1)",경계 강조 확인 (과도 적용 시 링잉 아티팩트 발생 주의),N/A,PASS,참고용
